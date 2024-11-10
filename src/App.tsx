@@ -5,7 +5,6 @@ import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./firebase";
 import { store } from "./store";
 import { AdmissionsPage } from "./pages/AdmissionsPage";
-import { ResearchPage } from "./pages/ResearchPage";
 import { HomePage } from "./pages/homepage/HomePage";
 import { AboutPage } from "./pages/AboutPage";
 import { DepartmentsPage } from "./pages/departments/Departments";
@@ -17,6 +16,18 @@ import { AuthPage } from "./pages/AuthPage";
 import { useEffect } from "react";
 import { DepartmentPage } from "./pages/departments/departmentPage";
 import { AmenitiesPage } from "./pages/Amenities";
+import { StudentActivitiesPage } from "./pages/StudentActivities";
+import { MediaPage } from "./pages/MediaPage";
+import { CenterOfExcellencePage } from "./pages/CenterOfExcellence";
+import { CenterOfCompetenciesPage } from "./pages/CenterOfCompetencies";
+import { GalleryPage } from "./pages/GalleryPage";
+import { TopCertificationPage } from "./pages/TopCertificationPage";
+import { InnovativeClubsPage } from "./pages/innovativeClubs";
+import { FeePaymentPage } from "./pages/FeePayment";
+import { StudentAchievementsPage } from "./pages/StudentAchievements";
+import ResearchPatents from "./pages/research/ResearchPage";
+import ResearchPatentForm from "./pages/research/researchForm";
+import { KeyExecutivesPage } from "./pages/keyExecutive";
 
 export function App() {
   const { user, setUser } = store();
@@ -50,11 +61,26 @@ export function App() {
             </Route>
             <Route path="/amenities" element={<AmenitiesPage />} />
             <Route path="/admissions" element={<AdmissionsPage />} />
-            <Route path="/research" element={<ResearchPage />} />
+            <Route path="/research" >
+              <Route index element={<ResearchPatents />} />
+              <Route path="add" element={<ResearchPatentForm />} />
+              <Route path="edit/:patentId" element={<ResearchPatentForm />} />
+            </Route>
+            <Route path="/key-executives" element={<KeyExecutivesPage />} />
             <Route path="/campus-life" element={<CampusLifePage />} />
             <Route path="/placements" element={<PlacementsPage />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/blog" element={<BlogPage />} />
+            <Route path="/student-activities" element={<StudentActivitiesPage />} />
+            <Route path="/media" element={<MediaPage />} />
+            <Route path="/center-of-excellence" element={<CenterOfExcellencePage />} />
+            <Route path="/center-of-competencies" element={<CenterOfCompetenciesPage />} />
+            <Route path="/gallery" element={<GalleryPage />} />
+            <Route path="/top-certification" element={<TopCertificationPage />} />
+            <Route path="/innovative-clubs" element={<InnovativeClubsPage />} />
+            <Route path="/fee-payment-curricular" element={<FeePaymentPage />} />
+            {/* <Route path="/examination-curriculars" element={<Exam />} /> */}
+            <Route path="/student-achievements" element={<StudentAchievementsPage />} />
           </Routes>
         </AppShellHeader>
       </div>
@@ -63,3 +89,5 @@ export function App() {
 }
 
 export default App;
+
+

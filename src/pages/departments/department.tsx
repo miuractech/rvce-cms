@@ -18,7 +18,7 @@ import {
 } from "@mantine/core";
 import { DepartmentData, IdepartmentStatus } from "./Departments";
 import { useState } from "react";
-import { doc, setDoc } from "firebase/firestore";
+import { collection, doc, setDoc } from "firebase/firestore";
 import { db } from "../../firebase";
 import { notifications } from "@mantine/notifications";
 import { useNavigate } from "react-router-dom";
@@ -57,8 +57,12 @@ export function DepartmentSection({ data }: DepartmentSectionProps) {
 
   const handleSubmit = async (values: any) => {
     setIsSubmitting(true);
+    if (!values.id) {
+      values.id = values.title.toLowerCase().replace(/\s+/g, '_');
+    }
+    console.log(values, data);
     try {
-      await setDoc(doc(db, "departments", data.id), {
+      await setDoc(doc(collection(db, "departments"), values.id), {
         ...values,
       });
 
