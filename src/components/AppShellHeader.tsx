@@ -1,4 +1,4 @@
-import { AppShell, Burger, Group, Skeleton, NavLink } from '@mantine/core';
+import { AppShell, Burger, Group, NavLink } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 
 export function AppShellHeader({ children }: { children: React.ReactNode }) {
